@@ -21,6 +21,7 @@ app.use((req, res) => res.status(404).send("Route does not exist"));
 const port = 5000;
 const start = async () => {
   try {
+    mongoose.set("strictQuery", false);
     await mongoose.connect(
       "mongodb+srv://achank128:anhchang128@nkcproject.wykh3ed.mongodb.net/BOOKING?retryWrites=true&w=majority"
     );
