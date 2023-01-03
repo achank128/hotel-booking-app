@@ -1,4 +1,5 @@
 import Booking from "../models/Booking.js";
+import Hotel from "../models/Hotel.js";
 
 export const createBooking = async (req, res) => {
   const booking = await Booking.create(req.body);
@@ -10,7 +11,14 @@ export const getUserBooking = async (req, res) => {
     const bookings = await Booking.find({ userId: req.params.userId }).sort({
       createdAt: -1,
     });
-    res.status(200).json(bookings);
+
+    let newBookings = [];
+    for (let i = 0; i < bookings.length; i++) {
+      const hotel = await Hotel.findById(bookings[i].hotelId);
+      newBookings.push({ ...bookings[i]._doc, hotel });
+    }
+
+    res.status(200).json(newBookings);
   } catch (error) {
     res.status(500).json(error);
   }
