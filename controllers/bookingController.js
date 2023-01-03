@@ -22,8 +22,12 @@ export const getAllBooking = async (req, res) => {
 };
 
 export const getBooking = async (req, res) => {
-  const booking = await Booking.findById(req.params.id);
-  if (!booking)
-    res.status(404).json({ msg: "No Booking with id: " + req.params.id });
-  res.status(200).json(booking);
+  try {
+    const booking = await Booking.findById(req.params.id);
+    if (!booking)
+      res.status(404).json({ msg: "No Booking with id: " + req.params.id });
+    res.status(200).json(booking);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 };

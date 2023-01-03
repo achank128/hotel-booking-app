@@ -7,7 +7,7 @@ import {
 
 const router = express.Router();
 router.post("/", createBooking);
-router.get("/all", getAllBooking);
-router.get("/:userId", getUserBooking);
+router.get("/", getAllBooking);
+router.get("/user/:userId", getUserBooking);
 
 export default router;
