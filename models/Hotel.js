@@ -4,6 +4,7 @@ const HotelSchema = new mongoose.Schema(
   {
     name: String,
     ratings: Number,
+    room: Number,
     visits: String,
     tags: String,
     description: String,
