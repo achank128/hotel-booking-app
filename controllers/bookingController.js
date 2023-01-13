@@ -6,6 +6,13 @@ export const createBooking = async (req, res) => {
   res.status(201).json({ msg: "Booking has been created!", booking });
 };
 
+export const updateBooking = async (req, res) => {
+  const booking = await Booking.findByIdAndUpdate(req.params.id, req.body);
+  if (!booking)
+    res.status(404).json({ msg: "No Booking with id: " + req.params.id });
+  res.status(200).json({ msg: "Booking has been updated!", booking });
+};
+
 export const getUserBooking = async (req, res) => {
   try {
     const bookings = await Booking.find({ userId: req.params.userId }).sort({

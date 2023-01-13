@@ -11,6 +11,7 @@ const HotelSchema = new mongoose.Schema(
     imageUrl: String,
     completedBookings: String,
     draftBookings: String,
+    price: Number,
   },
   { timestamps: true }
 );

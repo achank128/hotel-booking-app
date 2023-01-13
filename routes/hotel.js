@@ -8,6 +8,7 @@ import {
 } from "../controllers/hotelController.js";
 
 const router = express.Router();
+
 router.route("/").post(createHotel).get(getAllHotel);
 router.route("/:id").get(getHotel).delete(deleteHotel).put(updateHotel);
 

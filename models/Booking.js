@@ -12,6 +12,7 @@ const BookingSchema = new mongoose.Schema(
     },
     checkIn: Date,
     checkOut: Date,
+    total: Number,
   },
   { timestamps: true }
 );
